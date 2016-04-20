@@ -1,0 +1,16 @@
+## Running CNVnator for 7 samples in 20 chromosomes
+
+cnvnator  -root ${output}out1.root -chrom 1 2 3 4 5 6 7 8 9 10 -tree ${input}P1775_103/03-BAM/P1775_103.clean.dedup.recal.bam ${input}P1775_104/03-BAM/P1775_104.clean.dedup.recal.bam ${input}P1775_106/03-BAM/P1775_10\
+6.clean.dedup.recal.bam ${input}P1775_107/03-BAM/P1775_107.clean.dedup.recal.bam ${input}P1775_109/03-BAM/P1775_109.clean.dedup.recal.bam ${input}P1775_110/03-BAM/P1775_110.clean.dedup.recal.bam ${input}P1775_111/03-\
+BAM/P1775_111.clean.dedup.recal.bam
+cnvnator  -root ${output}out1.root -chrom 1 2 3 4 5 6 7 8 9 10 -his 1000 -d /proj/bils2015003/fa_files/
+cnvnator  -root ${output}out1.root -chrom 1 2 3 4 5 6 7 8 9 10 -stat 1000
+cnvnator  -root ${output}out1.root -chrom 1 2 3 4 5 6 7 8 9 10 -partition 1000 [-ngc]
+cnvnator  -root ${output}out1.root -chrom 1 2 3 4 5 6 7 8 9 10 -call 1000 [-ngc] > ${output}10chr_7samples.cnvator
+
+
+
+## Running manta for exome data for 2 samples
+/pica/sw/apps/bioinfo/manta/0.27.1/milou/bin/configManta.py --tumorBam S0156.recalibrated.final.bam --tumorBam S0160.recalibrated.final.bam --exome --referenceFasta /proj/b2012058/private/benjamin/eb/GATKbundle/human_g1k_v37.fasta --runDir /proj/bils2015003/Mantaresult/
+
+/proj/bils2015003/Mantaresult/runWorkflow.py -m local -j 1 -g 4
